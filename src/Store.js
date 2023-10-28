@@ -1,4 +1,5 @@
 import GenricsCard from "./layout/Card";
+import { Button } from "react-bootstrap";
 const Store = () => {
   const productsArr = [
     {
@@ -43,15 +44,20 @@ const Store = () => {
         Generics Store
       </h1>
       <h1 className="text-center">Music</h1>
-      <div className="d-flex">
-      {productsArr.map((item, id) =>
-        <GenricsCard
-          title={item.title}
-          key={id}
-          price={item.price}
-          imageUrl={item.imageUrl}
-        />
-      )}
+      <div className="row">
+        {productsArr.map((item, index) =>
+          <div class="col-lg-6">
+            <GenricsCard
+              title={item.title}
+              id={index}
+              price={item.price}
+              imageUrl={item.imageUrl}
+            />
+          </div>
+        )}
+      </div>
+      <div className="d-flex justify-content-center">
+        <Button variant="secondary">See the Cart </Button>
       </div>
     </div>
   );
