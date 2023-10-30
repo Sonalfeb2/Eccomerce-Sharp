@@ -3,14 +3,14 @@ export const TableComponent = (props) => {
 
   return (
     <div>
-      <Table responsive="sm" class="table-bordered">
+      <Table responsive="sm" className="table-bordered">
         {props.children}
         <tbody />
         {props.data.map((ele,index)=><tr key={index}>
-            <td class="w-25"><img src={ele.imageUrl} class="img-fluid" alt="product"/></td>
-            <td class="text-center">{ele.title}</td>
-            <td class="text-center">{ele.price}</td>
-            <td class="text-center">{ele.quantity}</td>
+            <td className="w-25"><img src={ele.imageUrl} className="img-fluid" alt="product"/></td>
+            <td className="text-center">{ele.title}</td>
+            <td className="text-center">{ele.price}</td>
+            <td className="text-center">{ele.quantity}</td>
         </tr>)}
       </Table>
     </div>

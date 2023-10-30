@@ -1,7 +1,7 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 const GenricsCard = props => {
-  const StyleCard = props.id % 2 == 0 ? true : false;
-  console.log(StyleCard,props.id)
+  const StyleCard = props.id % 2 === 0 ? true : false;
+  console.log(StyleCard, props.id);
   return (
     <div className={`d-flex ${StyleCard ? "justify-content-end" : ""} p-5`}>
       <Card border="light" style={{ width: "18rem" }}>
@@ -12,9 +12,10 @@ const GenricsCard = props => {
           <Card.Img variant="top" src={props.imageUrl} />
           <Card.Text className="d-flex justify-content-around">
             Price: $ {props.price}
-            <Button variant="primary">Add to Cart </Button>
+            <Button variant="primary">
+              Add to Cart
+            </Button>
           </Card.Text>
-         
         </Card.Body>
       </Card>
     </div>

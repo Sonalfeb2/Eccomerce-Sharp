@@ -46,7 +46,7 @@ const Store = () => {
       <h1 className="text-center">Music</h1>
       <div className="row">
         {productsArr.map((item, index) =>
-          <div class="col-lg-6">
+          <div className="col-lg-6">
             <GenricsCard
               title={item.title}
               id={index}
