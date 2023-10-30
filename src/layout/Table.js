@@ -9,9 +9,13 @@ export const TableComponent = (props) => {
         {props.data.map((ele,index)=><tr key={index}>
             <td className="w-25"><img src={ele.imageUrl} className="img-fluid" alt="product"/></td>
             <td className="text-center">{ele.title}</td>
-            <td className="text-center">{ele.price}</td>
             <td className="text-center">{ele.quantity}</td>
+            <td className="text-center">${ele.price}</td>
         </tr>)}
+        <tr>
+          <td colSpan={3}>Total Amount</td>
+          <td>${props.amount}</td>
+        </tr>
       </Table>
     </div>
   );

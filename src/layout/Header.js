@@ -1,11 +1,16 @@
 import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
 import Cart from "../Cart";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../context_store/Cart_Context";
 const Header = () => {
   const [show, setShow] = useState(false);
   const cartHandler = () => {
     setShow(!show);
   };
+  const ctx = useContext(CartContext);
+  const ctxCount = ctx.items.reduce((curr,item)=>{
+    return curr = curr + item.quantity
+  },0)
   return (
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
       <Container>
@@ -28,7 +33,7 @@ const Header = () => {
         >
           Cart
           <Badge pill bg="success" className="position-absolute top-0 start-100 translate-middle">
-            0
+            {ctxCount}
           </Badge>
         </Button>
         <Cart show={show} handleClose={cartHandler} />

@@ -1,56 +1,26 @@
-import { Offcanvas } from "react-bootstrap";
+import { Button, Offcanvas } from "react-bootstrap";
 import { TableComponent } from "./layout/Table";
+import CartContext from "./context_store/Cart_Context";
+import { useContext } from "react";
 const Cart = props => {
-  const cartElements = [
-    {
-      title: "Colors",
-
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1
-    }
-  ];
-
+  const ctx = useContext(CartContext);
+  
   return (
     <Offcanvas show={props.show} onHide={props.handleClose} placement="end">
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>CART</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <TableComponent data={cartElements}>
+        <TableComponent data={ctx.items} amount={ctx.totalAmount}>
         <thead >
             <th className="text-center">Image</th>
             <th className="text-center">Title</th>
-            <th className="text-center">Price</th>
+            
             <th className="text-center">Quantity</th>
+            <th className="text-center">Price</th>
         </thead>
         </TableComponent>
-       
+        <Button variant="primary" className="w-100" >PURCHASE</Button>
       </Offcanvas.Body>
     </Offcanvas>
   );
