@@ -14,10 +14,11 @@ const GenricsCard = props => {
           <Card.Img variant="top" src={props.imageUrl} />
           <Card.Text className="d-flex justify-content-around">
             Price: $ {props.price}
-            <Button variant="primary" onClick={()=>ctx.addItem(props)}>
+          </Card.Text>
+          
+          <Button className="w-100" variant="info" onClick={()=>ctx.addItem(props)}>
               Add to Cart
             </Button>
-          </Card.Text>
         </Card.Body>
       </Card>
     </div>

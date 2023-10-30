@@ -9,6 +9,7 @@ import {
 import { About } from "./pages/About";
 import Store from "./pages/Store";
 import Root from "./pages/Root";
+import Home from "./pages/Home";
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ function App() {
         {
           path: "/",
           element: <Store />
+        },
+        {
+          path: "/home",
+          element: <Home />
         }
       ]
     }

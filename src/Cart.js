@@ -20,7 +20,7 @@ const Cart = props => {
             <th className="text-center">Price</th>
         </thead>
         </TableComponent>
-        <Button variant="primary" className="w-100" >PURCHASE</Button>
+        <Button variant="info" className="w-100" >PURCHASE</Button>
       </Offcanvas.Body>
     </Offcanvas>
   );
