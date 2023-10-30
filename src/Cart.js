@@ -43,8 +43,7 @@ const Cart = props => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <TableComponent data={cartElements}>
-        <thead>
-            <th class="text-center">S.No</th>
+        <thead >
             <th class="text-center">Image</th>
             <th class="text-center">Title</th>
             <th class="text-center">Price</th>
