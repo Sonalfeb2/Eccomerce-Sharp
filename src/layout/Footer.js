@@ -1,7 +1,7 @@
-import { SocialIcon } from 'react-social-icons'
+import { SocialIcon} from 'react-social-icons'
 const Footer = () =>{
     return (
-        <div className=" d-flex justify-content-around bg-primary m-3 ">
+        <div className=" d-flex justify-content-around bg-primary ">
             <h1 className="text-white p-5">THE GENERICS</h1>
             <div className='p-5'>
             <SocialIcon className="m-1" url="https://twitter.com" />

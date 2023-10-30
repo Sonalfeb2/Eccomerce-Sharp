@@ -1,4 +1,4 @@
-import GenricsCard from "./layout/Card";
+import GenricsCard from "../layout/Card";
 import { Button } from "react-bootstrap";
 const Store = () => {
   const productsArr = [
@@ -40,9 +40,6 @@ const Store = () => {
   ];
   return (
     <div>
-      <h1 className=" p-5 bg-secondary text-white text-center">
-        Generics Store
-      </h1>
       <h1 className="text-center">Music</h1>
       <div className="row">
         {productsArr.map((item, index) =>
