@@ -17,15 +17,15 @@ const Header = () => {
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href="#">Generics</Navbar.Brand>
-        <Nav className="d-flex justify-content-between w-25">
-          <NavLink to="/home" className={({isActive})=>isActive?'text-info':'text-white'}  end>
-            Home
+        <Nav className="d-flex justify-content-between w-25" style={{fontWeight:'200', fontSize:'18px', textDecoration:'none'}}>
+          <NavLink to="/home" className={({isActive})=>isActive?'text-info':'text-white'}>
+            HOME
           </NavLink>
           <NavLink to="/" className={({isActive})=>isActive?'text-info':'text-white'} end>
-            Store
+            STORE
           </NavLink>
           <NavLink to="/about" className={({isActive})=>isActive?'text-info':'text-white'}>
-            About
+            ABOUT
           </NavLink>
         </Nav>
         <Button
@@ -42,9 +42,9 @@ const Header = () => {
       </Container>
     </Navbar>
     
-    <h1 className=" p-5 bg-secondary text-white text-center">
-    Generics Store
-  </h1>
+    <p className=" text-center pb-5 bg-secondary text-white" style={{fontSize:'100px' ,fontWeight:'bold'}}>
+    The Generics
+  </p>
   </>
   );
 };

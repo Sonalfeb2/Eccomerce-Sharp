@@ -11,6 +11,7 @@ import Store from "./pages/Store";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
+import './App.css';
 function App() {
   const router = createBrowserRouter([
     {
