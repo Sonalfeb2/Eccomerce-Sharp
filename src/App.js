@@ -12,6 +12,7 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import './App.css';
+import ContactUS from "./pages/ContactUs";
 function App() {
   const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ function App() {
         {
           path: "/home",
           element: <Home />
+        },
+        {
+          path: "/contact",
+          element: <ContactUS />
         }
       ]
     }

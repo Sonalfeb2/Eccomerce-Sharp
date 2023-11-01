@@ -27,6 +27,9 @@ const Header = () => {
           <NavLink to="/about" className={({isActive})=>isActive?'text-info':'text-white'}>
             ABOUT
           </NavLink>
+          <NavLink to="/contact" className={({isActive})=>isActive?'text-info':'text-white'}>
+            Contact-Us
+          </NavLink>
         </Nav>
         <Button
           variant="outline-info"
