@@ -11,6 +11,7 @@ import Store from "./pages/Store";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import './App.css';
 import ContactUS from "./pages/ContactUs";
 function App() {
@@ -32,6 +33,10 @@ function App() {
         {
           path: "/contact",
           element: <ContactUS />
+        },
+        {
+          path: "/product-detail/:id",
+          element: <ProductDetailPage />
         }
       ]
     }

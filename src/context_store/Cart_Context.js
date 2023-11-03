@@ -30,7 +30,6 @@ export const CartContextProvider = props => {
       addItem: addItemHandler,
       removeItem: removeItemHandler
     };
-    console.log(itemState, totalAmount);
     return (
       <CartContext.Provider value={contextValue}>
         {props.children}

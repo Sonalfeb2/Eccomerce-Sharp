@@ -7,7 +7,6 @@ const Store = () => {
     fetch("https://dummyjson.com/products")
       .then(data => data.json())
       .then(data => {
-        console.log(data.products);
         setProduct(data.products);
       });
   }, []);

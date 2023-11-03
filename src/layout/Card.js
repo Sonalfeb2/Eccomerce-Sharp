@@ -1,11 +1,12 @@
 import { Card, Button} from "react-bootstrap";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import CartContext from "../context_store/Cart_Context";
 const GenricsCard = props => {
   const ctx = useContext(CartContext)
   return (
     <div className="d-flex justify-content-around">
-      <Card border="light" >
+     <Link to={`/product-detail/${props.id}`}> <Card border="light" >
         <Card.Header className="text-center">
           {props.title}
         </Card.Header>
@@ -20,6 +21,7 @@ const GenricsCard = props => {
             </Button>
         </Card.Body>
       </Card>
+      </Link>
     </div>
   );
 };
