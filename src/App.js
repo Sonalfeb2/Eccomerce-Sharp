@@ -4,7 +4,8 @@ import "./App.css";
 import { CartContextProvider } from "./context_store/Cart_Context";
 import {
   createBrowserRouter,
-  RouterProvider,
+  Navigate,
+  RouterProvider
 } from "react-router-dom";
 import { About } from "./pages/About";
 import Store from "./pages/Store";
@@ -12,18 +13,22 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import './App.css';
+import "./App.css";
 import ContactUS from "./pages/ContactUs";
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root />,
-      errorElement: <ErrorPage/>,
+      errorElement: <ErrorPage />,
       children: [
         { path: "/about", element: <About /> },
         {
           path: "/",
+          element: <Navigate to="/store" replace />
+        },
+        {
+          path: "/store",
           element: <Store />
         },
         {
@@ -43,7 +48,7 @@ function App() {
   ]);
   return (
     <CartContextProvider>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </CartContextProvider>
   );
 }

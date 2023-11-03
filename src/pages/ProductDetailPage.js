@@ -4,7 +4,6 @@ import { Col, Image, Card, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 const ProductDetailPage = () => {
   const params = useParams();
-  console.log(params);
   const [productDetail, setProductDetail] = useState(null);
   useEffect(
     () => {
@@ -14,7 +13,6 @@ const ProductDetailPage = () => {
     },
     [params.id]
   );
-  console.log(productDetail);
   return (
     <div>
       {productDetail !== null &&
