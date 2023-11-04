@@ -15,6 +15,7 @@ import ErrorPage from "./pages/ErrorPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import "./App.css";
 import ContactUS from "./pages/ContactUs";
+import AuthForm from "./Auth/AuthForm";
 function App() {
   const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ function App() {
         {
           path: "/product-detail/:id",
           element: <ProductDetailPage />
+        },
+        {
+          path: "/user-auth",
+          element: <AuthForm />
         }
       ]
     }

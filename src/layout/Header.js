@@ -2,7 +2,7 @@ import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
 import Cart from "../Cart";
 import { useContext, useState } from "react";
 import CartContext from "../context_store/Cart_Context";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
   const [show, setShow] = useState(false);
   const cartHandler = () => {
@@ -12,6 +12,10 @@ const Header = () => {
   const ctxCount = ctx.items.reduce((curr,item)=>{
     return curr = curr + item.quantity
   },0)
+  const navigate = useNavigate();
+  const goToLogin = () =>{
+    navigate('/user-auth')
+  }
   return (
     < >
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
@@ -28,9 +32,10 @@ const Header = () => {
             ABOUT
           </NavLink>
           <NavLink to="/contact" className={({isActive})=>isActive?'text-info':'text-white'}>
-            Contact-Us
+            HELP
           </NavLink>
         </Nav>
+        <div>
         <Button
           variant="outline-info"
           onClick={cartHandler}
@@ -41,6 +46,14 @@ const Header = () => {
             {ctxCount}
           </Badge>
         </Button>
+        <Button
+          variant="outline-info"
+          className="m-3"
+          onClick = {goToLogin}
+        >
+          Login
+        </Button>
+        </div>
         <Cart show={show} handleClose={cartHandler} />
       </Container>
     </Navbar>
