@@ -33,6 +33,8 @@ const AuthForm = () => {
       setIsLoading(false);
       setShowMsg(true);
       setTimeout(() => setShowMsg(false), 3000);
+      email.current.value = '';
+      password.current.value='';
     }
   };
   return (
