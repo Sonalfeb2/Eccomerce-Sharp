@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import {   useEffect, useState } from "react";
 import GenricsCard from "../layout/Card";
 import { Button, Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
-
 const Store = () => {
   const [product, setProduct] = useState([]);
   const [pageCount, setPageCount] = useState(1);
@@ -32,8 +31,8 @@ const Store = () => {
         className="m-2"
         variant="info"
       >
-        {categories.map(item =>
-          <Dropdown.Item onClick={() => QueryHandler(item)}>
+        {categories.map((item,index) =>
+          <Dropdown.Item key={index} onClick={() => QueryHandler(item)}>
             {item}
           </Dropdown.Item>
         )}
@@ -45,6 +44,7 @@ const Store = () => {
               index < pageCount * 10 &&
               <div className="col-6" key={item.id}>
                 <GenricsCard
+                  
                   title={item.title}
                   id={item.id}
                   price={item.price}

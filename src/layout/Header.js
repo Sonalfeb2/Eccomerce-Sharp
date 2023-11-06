@@ -3,18 +3,26 @@ import Cart from "../Cart";
 import { useContext, useState } from "react";
 import CartContext from "../context_store/Cart_Context";
 import { NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "../context_store/AuthContext";
 const Header = () => {
   const [show, setShow] = useState(false);
   const cartHandler = () => {
     setShow(!show);
   };
   const ctx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
   const ctxCount = ctx.items.reduce((curr,item)=>{
     return curr = curr + item.quantity
   },0)
   const navigate = useNavigate();
   const goToLogin = () =>{
+    if(authCtx.userLoggedIn){
+      window.confirm('Are You Sure to SignOut')&&authCtx.logout()
+      
+    }
+    else{
     navigate('/user-auth')
+    }
   }
   return (
     < >
@@ -51,7 +59,7 @@ const Header = () => {
           className="m-3"
           onClick = {goToLogin}
         >
-          Login
+          {authCtx.userLoggedIn?'SignOut':'SignIn'}
         </Button>
         </div>
         <Cart show={show} handleClose={cartHandler} />

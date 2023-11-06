@@ -16,6 +16,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import "./App.css";
 import ContactUS from "./pages/ContactUs";
 import AuthForm from "./Auth/AuthForm";
+import { AuthContextProvider } from "./context_store/AuthContext";
 function App() {
   const router = createBrowserRouter([
     {
@@ -52,9 +53,11 @@ function App() {
     }
   ]);
   return (
-    <CartContextProvider>
-      <RouterProvider router={router} />
-    </CartContextProvider>
+    <AuthContextProvider>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </AuthContextProvider>
   );
 }
 
