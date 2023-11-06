@@ -5,7 +5,7 @@ import classes from "./AuthForm.module.css";
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-  const [showMsg, setShowMsg] = useState({active:false,message:''});
+  const [showMsg, setShowMsg] = useState({ active: false, message: "" });
   const email = useRef();
   const password = useRef();
   const switchAuthModeHandler = () => {
@@ -31,30 +31,52 @@ const AuthForm = () => {
         }
       );
       const data = await response.json();
-      console.log(data)
-      if(data.error){
+      console.log(data);
+      if (data.error) {
         setIsLoading(false);
-        
-        setShowMsg({active:true,message:data.error.message});
-        setTimeout(() => setShowMsg({active:false,message:''}), 3000);
+        setShowMsg({ active: true, message: data.error.message });
+        setTimeout(() => setShowMsg({ active: false, message: "" }), 3000);
+        email.current.value = "";
+        password.current.value = "";
+      } else {
+        setIsLoading(false);
+        setShowMsg({ active: "true", message: "Signup SuccessFully" });
+        setTimeout(() => setShowMsg({ active: false, message: "" }), 3000);
         email.current.value = "";
         password.current.value = "";
       }
-      else {
-        setIsLoading(false);
-        setShowMsg({active:'true', message:'Saved SuccessFully'});
-        setTimeout(() => setShowMsg({active:false,message:''}), 3000);
-        email.current.value = "";
-        password.current.value = "";
-      }
-      
     } else {
       const response = await fetch(
-        `https://mypprojectauth-default-rtdb.firebaseio.com/Signupprint=pretty`
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBdq5esPKWLoYUGEdAuhpHjbhiv7YhD6jQ 
+        `,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email.current.value,
+            password: password.current.value,
+            returnSecureToken: true
+          })
+        }
       );
 
       const data = await response.json();
       console.log(data);
+      if (data.error) {
+        setIsLoading(false);
+        setShowMsg({ active: true, message: data.error.message });
+        setTimeout(() => setShowMsg({ active: false, message: "" }), 3000);
+        email.current.value = "";
+        password.current.value = "";
+      } else {
+        setIsLoading(false);
+        setShowMsg({ active: "true", message: "Login SuccessFully" });
+        setTimeout(() => setShowMsg({ active: false, message: "" }), 3000);
+        email.current.value = "";
+        password.current.value = "";
+      }
     }
   };
   return (
@@ -104,7 +126,7 @@ const AuthForm = () => {
               <strong className="me-auto">Message</strong>
             </Toast.Header>
             <Toast.Body>
-             {showMsg.message}
+              {showMsg.message}
             </Toast.Body>
           </Toast>
         </ToastContainer>}
