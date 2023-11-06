@@ -5,7 +5,7 @@ import classes from "./AuthForm.module.css";
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-  const [showMsg, setShowMsg] = useState(false);
+  const [showMsg, setShowMsg] = useState({active:false,message:''});
   const email = useRef();
   const password = useRef();
   const switchAuthModeHandler = () => {
@@ -14,27 +14,47 @@ const AuthForm = () => {
   const AuthHandler = async e => {
     e.preventDefault();
     setIsLoading(true);
-    const category = isLogin ? "Login" : "Signup";
-    const response = await fetch(
-      `https://mypprojectauth-default-rtdb.firebaseio.com/${category}.json`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email.current.value,
-          password: password.current.value
-        })
+    if (!isLogin) {
+      const response = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBdq5esPKWLoYUGEdAuhpHjbhiv7YhD6jQ
+        `,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email.current.value,
+            password: password.current.value,
+            returnSecureToken: true
+          })
+        }
+      );
+      const data = await response.json();
+      console.log(data)
+      if(data.error){
+        setIsLoading(false);
+        
+        setShowMsg({active:true,message:data.error.message});
+        setTimeout(() => setShowMsg({active:false,message:''}), 3000);
+        email.current.value = "";
+        password.current.value = "";
       }
-    );
-    const data = await response.json();
-    if (data.name) {
-      setIsLoading(false);
-      setShowMsg(true);
-      setTimeout(() => setShowMsg(false), 3000);
-      email.current.value = '';
-      password.current.value='';
+      else {
+        setIsLoading(false);
+        setShowMsg({active:'true', message:'Saved SuccessFully'});
+        setTimeout(() => setShowMsg({active:false,message:''}), 3000);
+        email.current.value = "";
+        password.current.value = "";
+      }
+      
+    } else {
+      const response = await fetch(
+        `https://mypprojectauth-default-rtdb.firebaseio.com/Signupprint=pretty`
+      );
+
+      const data = await response.json();
+      console.log(data);
     }
   };
   return (
@@ -73,7 +93,7 @@ const AuthForm = () => {
           </button>
         </div>
       </form>
-      {showMsg &&
+      {showMsg.active &&
         <ToastContainer
           className="p-3"
           position="top-center"
@@ -84,7 +104,7 @@ const AuthForm = () => {
               <strong className="me-auto">Message</strong>
             </Toast.Header>
             <Toast.Body>
-              {isLogin ? "Login SuccessFully" : "SignUp SuccessFully"}
+             {showMsg.message}
             </Toast.Body>
           </Toast>
         </ToastContainer>}

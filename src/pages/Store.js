@@ -43,7 +43,7 @@ const Store = () => {
           product.map((item, index) => {
             return (
               index < pageCount * 10 &&
-              <div className="col-lg-6" key={item.id}>
+              <div className="col-6" key={item.id}>
                 <GenricsCard
                   title={item.title}
                   id={item.id}

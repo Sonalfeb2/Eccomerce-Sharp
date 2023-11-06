@@ -10,7 +10,6 @@ const ContactUS = props => {
   const showDetail =async(e) => {
     e.preventDefault();
     if(contactDetail.name!=='' && contactDetail.email!==''&& contactDetail.pno!==''){
-    console.log(contactDetail);
     const response = await fetch('https://react-http-65919-default-rtdb.firebaseio.com/Eccom-help.json',{
         method:"POST",
         body: JSON.stringify(contactDetail),
