@@ -18,7 +18,10 @@ const Header = () => {
   const navigate = useNavigate();
   const goToLogin = () =>{
     if(authCtx.userLoggedIn){
-      window.confirm('Are You Sure to SignOut')&&authCtx.logout()
+      const confirm = window.confirm('Are You Sure to SignOut');
+      if(confirm){
+        authCtx.logout()
+      }
       
     }
     else{

@@ -28,7 +28,7 @@ const Profile = () => {
         .then(data => setEmail(data.users[0].email))
         .catch(err => setEmail(err.message));
     },
-    []
+    [ctx.tokenId]
   );
   const changePasswordHandler = async () => {
     const response = await fetch(
@@ -56,7 +56,7 @@ const Profile = () => {
     }
   };
   return (
-    <Form>
+    <Form className="mx-auto p-2" style={{width: "50%"}}>
       <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
         <Form.Label column sm="2">
           Email
@@ -79,8 +79,7 @@ const Profile = () => {
         </Col>
       </Form.Group>
       <Button
-        className="mx-auto"
-        style={{ width: "100%" }}
+        className="align-middle"
         onClick={changePasswordHandler}
       >
         Update Password
