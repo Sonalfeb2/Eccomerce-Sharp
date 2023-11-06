@@ -1,10 +1,11 @@
-import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Badge ,Dropdown,DropdownButton } from "react-bootstrap";
 import Cart from "../Cart";
 import { useContext, useState } from "react";
 import CartContext from "../context_store/Cart_Context";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../context_store/AuthContext";
 const Header = () => {
+
   const [show, setShow] = useState(false);
   const cartHandler = () => {
     setShow(!show);
@@ -24,10 +25,11 @@ const Header = () => {
     navigate('/user-auth')
     }
   }
+
   return (
     < >
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
-      <Container>
+      <Container fluid>
         <Navbar.Brand href="#">Generics</Navbar.Brand>
         <Nav className="d-flex justify-content-between w-25" style={{fontWeight:'200', fontSize:'18px', textDecoration:'none'}}>
           <NavLink to="/home" className={({isActive})=>isActive?'text-info':'text-white'}>
@@ -43,8 +45,19 @@ const Header = () => {
             HELP
           </NavLink>
         </Nav>
-        <div>
-        <Button
+        <div className="d-flex justify-content-around w-25"> 
+        {authCtx.userLoggedIn &&<DropdownButton
+        id="dropdown-basic-button"
+        title="Profile"
+        variant="info"
+      ><Dropdown.Item>
+            Update Password
+          </Dropdown.Item>
+          <Dropdown.Item onClick={goToLogin}>
+            Sign Out
+          </Dropdown.Item>
+        </DropdownButton>
+      }<Button
           variant="outline-info"
           onClick={cartHandler}
           className="position-relative"
@@ -54,13 +67,12 @@ const Header = () => {
             {ctxCount}
           </Badge>
         </Button>
-        <Button
+        {!ctx.userLoggedIn && <Button
           variant="outline-info"
-          className="m-3"
           onClick = {goToLogin}
         >
-          {authCtx.userLoggedIn?'SignOut':'SignIn'}
-        </Button>
+          SignIn
+        </Button>}
         </div>
         <Cart show={show} handleClose={cartHandler} />
       </Container>

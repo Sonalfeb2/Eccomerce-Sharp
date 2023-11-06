@@ -87,7 +87,9 @@ const AuthForm = () => {
     }
   };
   return (
-    <section className={classes.auth}>
+    <section className={classes.auth} >
+      {!ctx.userLoggedIn &&
+      <>
       <h1>
         {isLogin ? "Login" : "Sign Up"}
       </h1>
@@ -141,7 +143,11 @@ const AuthForm = () => {
             </Toast.Body>
           </Toast>
         </ToastContainer>}
+        </>
+}
+{ctx.userLoggedIn&& <h1>You are Already Signed In</h1>}
     </section>
+  
   );
 };
 
