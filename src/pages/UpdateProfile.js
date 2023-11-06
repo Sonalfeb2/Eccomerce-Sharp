@@ -46,9 +46,13 @@ const Profile = () => {
       }
     );
     const data = await response.json();
-    if (data) {
-      window.confirm("SuccessFully Changed");
+    console.log(data)
+    if (data.error) {
+      window.confirm(data.error.message);
       newPasswordRef.current.value = "";
+    }
+    else{
+        window.confirm('SuccessFully Changed')
     }
   };
   return (
