@@ -50,7 +50,7 @@ const Header = () => {
         id="dropdown-basic-button"
         title="Profile"
         variant="info"
-      ><Dropdown.Item>
+      ><Dropdown.Item onClick={()=>navigate('/change-password')}>
             Update Password
           </Dropdown.Item>
           <Dropdown.Item onClick={goToLogin}>

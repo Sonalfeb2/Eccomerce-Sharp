@@ -31,7 +31,7 @@ const Home = () => {
     <h1 className="text-center" >Tours</h1>
     <Table bordered hover>
       <tbody>
-        {data.map((item)=><tr>
+        {data.map((item,index)=><tr key={index}>
             <td>{item.date}</td>
             <td>{item.place}</td>
             <td>{item.address}</td>

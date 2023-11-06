@@ -2,6 +2,7 @@
 // import Footer from "./layout/Footer";
 import "./App.css";
 import { CartContextProvider } from "./context_store/Cart_Context";
+import Profile from "./pages/UpdateProfile";
 import {
   createBrowserRouter,
   Navigate,
@@ -48,6 +49,10 @@ function App() {
         {
           path: "/user-auth",
           element: <AuthForm />
+        },
+        {
+          path: "/change-password",
+          element: <Profile />
         }
       ]
     }

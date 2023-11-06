@@ -12,12 +12,14 @@ const Cart = props => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <TableComponent data={ctx.items} amount={ctx.totalAmount}>
-        <thead >
+        <thead>
+          <tr>
             <th className="text-center">Image</th>
             <th className="text-center">Title</th>
             
             <th className="text-center">Quantity</th>
             <th className="text-center">Price</th>
+            </tr>
         </thead>
         </TableComponent>
         <Button variant="info" className="w-100" >PURCHASE</Button>

@@ -5,7 +5,7 @@ export const TableComponent = (props) => {
     <div>
       <Table responsive="sm" className="table-bordered">
         {props.children}
-        <tbody />
+        <tbody>
         {props.data.map((ele,index)=><tr key={index}>
             <td className="w-25"><img src={ele.imageUrl} className="img-fluid" alt="product"/></td>
             <td className="text-center">{ele.title}</td>
@@ -16,6 +16,7 @@ export const TableComponent = (props) => {
           <td colSpan={3}>Total Amount</td>
           <td>${props.amount}</td>
         </tr>
+        </tbody>
       </Table>
     </div>
   );
