@@ -30,11 +30,11 @@ function App() {
         { path: "/about", element: <About /> },
         {
           path: "/",
-          element: authCtx.userLoggedIn? <Navigate to="/store" replace />:<Navigate to="/user-auth" />
+          element: authCtx.userLoggedIn ? <Navigate to="/store" replace />:<Navigate to="/user-auth"  />
         },
         {
           path: "/store",
-          element: <Store />
+          element:authCtx.userLoggedIn ?  <Store /> :<Navigate to="/user-auth"  />
         },
         {
           path: "/home",
