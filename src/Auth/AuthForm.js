@@ -74,7 +74,8 @@ const AuthForm = () => {
         email.current.value = "";
         password.current.value = "";
       } else {
-        ctx.login(data.idToken);
+        
+        ctx.login(data.idToken,data.email);
         setIsLoading(false);
         setShowMsg({ active: "true", message: "Login SuccessFully" });
         setTimeout(() => setShowMsg({ active: false, message: "" }), 3000);

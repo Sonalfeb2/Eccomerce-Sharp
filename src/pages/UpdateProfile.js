@@ -3,7 +3,6 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import AuthContext from "../context_store/AuthContext";
 const Profile = () => {
   const ctx = useContext(AuthContext);
-  console.log(ctx)
   const [email, setEmail] = useState("");
   const newPasswordRef = useRef();
   useEffect(
@@ -46,7 +45,6 @@ const Profile = () => {
       }
     );
     const data = await response.json();
-    console.log(data)
     if (data.error) {
       window.confirm(data.error.message);
       newPasswordRef.current.value = "";
