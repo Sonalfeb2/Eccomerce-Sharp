@@ -51,6 +51,7 @@ const Profile = () => {
     }
     else{
         window.confirm('SuccessFully Changed')
+        newPasswordRef.current.value = "";
     }
   };
   return (

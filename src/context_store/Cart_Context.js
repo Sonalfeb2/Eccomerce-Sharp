@@ -10,7 +10,7 @@ export const CartContextProvider = props => {
   const authCtx = useContext(AuthContext);
   const [itemState, setItemState] = useState([]);
   const getData = () => {
-    fetch(`https://crudcrud.com/api/47aabb402f994ce1a102c6799a8b4084/cart`)
+    fetch(`https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart`)
       .then(res => {
         if (!res.ok) {
           throw new Error("somethingwrong");
@@ -34,7 +34,7 @@ export const CartContextProvider = props => {
     const found = itemState.find(element => element.id === newItem.id);
     if (found) {
       const response = await fetch(
-        `https://crudcrud.com/api/47aabb402f994ce1a102c6799a8b4084/cart/${found._id}`,
+        `https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart/${found._id}`,
         {
           method: "PUT",
           headers: {
@@ -55,7 +55,7 @@ export const CartContextProvider = props => {
       }
     } else {
       const response = await fetch(
-        "https://crudcrud.com/api/47aabb402f994ce1a102c6799a8b4084/cart",
+        "https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart",
         {
           method: "POST",
           headers: {

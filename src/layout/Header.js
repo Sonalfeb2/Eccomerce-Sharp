@@ -50,6 +50,16 @@ const Header = () => {
           </NavLink>
         </Nav>
         <div className="d-flex flex-row-reverse w-25"> 
+        <Button
+          variant="outline-info"
+          onClick={cartHandler}
+          className="position-relative m-2"
+        >
+          Cart
+          <Badge pill bg="success" className="position-absolute top-0 start-100 translate-middle">
+            {ctxCount}
+          </Badge>
+        </Button>
         {authCtx.userLoggedIn &&<DropdownButton className="m-2"
         id="dropdown-basic-button"
         title="Profile"
@@ -61,16 +71,7 @@ const Header = () => {
             Sign Out
           </Dropdown.Item>
         </DropdownButton>
-      }<Button
-          variant="outline-info"
-          onClick={cartHandler}
-          className="position-relative m-2"
-        >
-          Cart
-          <Badge pill bg="success" className="position-absolute top-0 start-100 translate-middle">
-            {ctxCount}
-          </Badge>
-        </Button>
+      }
         {!authCtx.userLoggedIn && <Button
           variant="outline-info m-2"
           onClick = {goToLogin}
