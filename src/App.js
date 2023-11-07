@@ -17,8 +17,10 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import "./App.css";
 import ContactUS from "./pages/ContactUs";
 import AuthForm from "./Auth/AuthForm";
-import { AuthContextProvider } from "./context_store/AuthContext";
+import AuthContext from "./context_store/AuthContext";
+import { useContext } from "react";
 function App() {
+  const authCtx = useContext(AuthContext);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -52,17 +54,17 @@ function App() {
         },
         {
           path: "/change-password",
-          element: <Profile />
+          element: authCtx.userLoggedIn
+            ? <Profile />
+            : <Navigate to="/user-auth" />
         }
       ]
     }
   ]);
   return (
-    <AuthContextProvider>
       <CartContextProvider>
         <RouterProvider router={router} />
       </CartContextProvider>
-    </AuthContextProvider>
   );
 }
 

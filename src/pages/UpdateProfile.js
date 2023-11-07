@@ -3,6 +3,7 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import AuthContext from "../context_store/AuthContext";
 const Profile = () => {
   const ctx = useContext(AuthContext);
+  console.log(ctx)
   const [email, setEmail] = useState("");
   const newPasswordRef = useRef();
   useEffect(
@@ -27,8 +28,7 @@ const Profile = () => {
         })
         .then(data => setEmail(data.users[0].email))
         .catch(err => setEmail(err.message));
-    },
-    [ctx.tokenId]
+    },[ctx]
   );
   const changePasswordHandler = async () => {
     const response = await fetch(

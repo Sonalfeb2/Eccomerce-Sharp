@@ -11,6 +11,7 @@ const Header = () => {
     setShow(!show);
   };
   const ctx = useContext(CartContext);
+  
   const authCtx = useContext(AuthContext);
   const ctxCount = ctx.items.reduce((curr,item)=>{
     return curr = curr + item.quantity
