@@ -5,6 +5,8 @@ const Profile = () => {
   const ctx = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const newPasswordRef = useRef();
+  
+  console.log(ctx.tokenId)
   useEffect(
     () => {
       fetch(
@@ -21,6 +23,7 @@ const Profile = () => {
       )
         .then(res => {
           if (!res.ok) {
+            console.log('res',res)
             throw new Error("Email Not Found");
           }
           return res.json();
