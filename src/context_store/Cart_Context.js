@@ -10,7 +10,7 @@ export const CartContextProvider = props => {
   const authCtx = useContext(AuthContext);
   const [itemState, setItemState] = useState([]);
   const getData = () => {
-    fetch(`https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart`)
+    fetch(`https://crudcrud.com/api/ad4aa1b2abfd4f438a0e49780f0d093d/cart`)
       .then(res => {
         if (!res.ok) {
           throw new Error("somethingwrong");
@@ -26,15 +26,18 @@ export const CartContextProvider = props => {
       })
       .catch(err => setItemState([]));
   };
-  useEffect(() => {
-    getData();
-  }, [authCtx.useremail]);
+  useEffect(
+    () => {
+      getData();
+    },
+    [authCtx.useremail]
+  );
 
   const addItemHandler = async newItem => {
     const found = itemState.find(element => element.id === newItem.id);
     if (found) {
       const response = await fetch(
-        `https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart/${found._id}`,
+        `https://crudcrud.com/api/ad4aa1b2abfd4f438a0e49780f0d093d/cart/${found._id}`,
         {
           method: "PUT",
           headers: {
@@ -55,7 +58,7 @@ export const CartContextProvider = props => {
       }
     } else {
       const response = await fetch(
-        "https://crudcrud.com/api/40e3323dcced4eeaa6a858d854165f0c/cart",
+        "https://crudcrud.com/api/ad4aa1b2abfd4f438a0e49780f0d093d/cart",
         {
           method: "POST",
           headers: {
@@ -75,9 +78,38 @@ export const CartContextProvider = props => {
       }
     }
   };
-  const removeItemHandler = id => {
-    const removeData = itemState.filter(item => item.id !== id);
-    setItemState(removeData);
+  const removeItemHandler = async ele => {
+    if (ele.quantity - 1 === 0) {
+      await fetch(
+        `https://crudcrud.com/api/ad4aa1b2abfd4f438a0e49780f0d093d/cart/${ele._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json"
+          }
+        }
+      );
+    } else {
+      await fetch(
+        `https://crudcrud.com/api/ad4aa1b2abfd4f438a0e49780f0d093d/cart/${ele._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            id: ele.id,
+            title: ele.title,
+            imageUrl: ele.imageUrl,
+            price: ele.price,
+            email: ele.email,
+            quantity: ele.quantity - 1
+          })
+        }
+      );
+    }
+
+    getData();
   };
   const totalAmount = itemState.reduce((curr, item) => {
     return (curr = curr + item.price * item.quantity);
